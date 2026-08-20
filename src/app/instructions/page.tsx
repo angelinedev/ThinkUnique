@@ -16,7 +16,8 @@ const teamCriteria = [
   "Interdepartmental teams are allowed, but participants cannot be part of other department SIH teams.",
   "At least 50% of the team (minimum 3 members) must be from the CSE department.",
   "Hardware Edition: Teams can be multi-disciplinary.",
-  "Software Edition: The majority of the team members must be programmers."
+  "Software Edition: The majority of the team members must be programmers.",
+  "Teams must select one of the provided official themes and frame their own problem statement based on references from previous SIH problem statements."
 ];
 
 export default function InstructionsPage() {
@@ -30,7 +31,7 @@ export default function InstructionsPage() {
         <Card className="bg-blue-900/[0.05] border-blue-500/20 backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:bg-blue-900/[0.1] transition-all duration-300 transform hover:-translate-y-1">
           <CardHeader>
             <CardTitle className="font-headline text-2xl flex items-center gap-3">
-              <FileText className="text-blue-400"/>
+              <FileText className="text-blue-400" />
               Presentation Guidelines
             </CardTitle>
           </CardHeader>
@@ -44,10 +45,10 @@ export default function InstructionsPage() {
               ))}
             </ul>
             <Button asChild className="mt-6 w-full bg-blue-600 text-white hover:bg-blue-500 font-semibold transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)]">
-                <Link href="/SIH2026-IDEA-Presentation-Format.pptx" target="_blank">
-                    <Download className="mr-2"/>
-                    Download Presentation Template
-                </Link>
+              <Link href="/SIH2026-IDEA-Presentation-Format.pptx" target="_blank">
+                <Download className="mr-2" />
+                Download Presentation Template
+              </Link>
             </Button>
           </CardContent>
         </Card>
