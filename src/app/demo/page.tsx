@@ -4,7 +4,7 @@ import InteractiveSynapseNetwork, {
   InteractiveSynapseNetworkProps,
 } from '@/components/ui/interactive-synapse-network'
 
-export const InteractiveSynapseNetworkDemo = () => {
+const InteractiveSynapseNetworkDemo = () => {
   const glowStyle = '0 0 5px #00dcff, 0 0 10px #00dcff'
   const demoProps: InteractiveSynapseNetworkProps = {
     nodeColor: 'rgba(0,220,255,0.8)',

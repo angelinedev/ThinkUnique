@@ -93,3 +93,65 @@ async function ensureSheetAndHeaders(sheets: sheets_v4.Sheets, spreadsheetId: st
         });
     }
 }
+
+export async function findTeamBySubmissionId(submissionId: string) {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId: SPREADSHEET_ID,
+      range: `${SHEET_NAME}!A:E`,
+    });
+
+    const rows = response.data.values;
+    if (!rows || rows.length === 0) {
+      return null;
+    }
+
+    // Find the row matching the submission ID
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i][0] === submissionId) {
+        return {
+          rowIndex: i + 1, // Google Sheets rows are 1-indexed
+          teamName: rows[i][1],
+          edition: rows[i][2],
+          problemStatementId: rows[i][3],
+          problemStatementTitle: rows[i][4],
+        };
+      }
+    }
+    return null;
+  } catch (error) {
+    console.error('Error finding team by submission ID:', error);
+    return null;
+  }
+}
+
+export async function updateProblemStatementInSheet(
+  submissionId: string,
+  problemStatementId: string,
+  problemStatementTitle: string
+) {
+  try {
+    const team = await findTeamBySubmissionId(submissionId);
+    if (!team) {
+      return { success: false, error: 'Team ID not found.' };
+    }
+
+    const sheets = await getGoogleSheetsClient();
+    const range = `${SHEET_NAME}!D${team.rowIndex}:E${team.rowIndex}`;
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: SPREADSHEET_ID,
+      range,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [[problemStatementId, problemStatementTitle]],
+      },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error updating problem statement:', error);
+    return { success: false, error: 'Failed to update problem statement.' };
+  }
+}

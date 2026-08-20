@@ -121,6 +121,19 @@ export default function Home() {
             </Link>
           </Button>
         </div>
+        
+        <div 
+          className={cn(
+            "mt-8 transition-all duration-[2000ms] delay-200",
+            (!skipIntro && introStage < 2) ? "opacity-0 translate-y-4 pointer-events-none" : "opacity-100 translate-y-0"
+          )}
+        >
+          <Button asChild size="sm" variant="link" className="text-blue-300/80 hover:text-blue-300">
+            <Link href="/update-problem-statement">
+              Already Registered? Update Problem Statement
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

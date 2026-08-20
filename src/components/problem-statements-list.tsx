@@ -13,9 +13,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 type ProblemStatementsListProps = {
   statements: ProblemStatement[];
+  mode?: "register" | "select";
+  onSelect?: (statement: ProblemStatement) => void;
 };
 
-export default function ProblemStatementsList({ statements }: ProblemStatementsListProps) {
+export default function ProblemStatementsList({ statements, mode = 'register', onSelect }: ProblemStatementsListProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState<'All' | 'Hardware' | 'Software'>('All');
 
@@ -107,12 +109,19 @@ export default function ProblemStatementsList({ statements }: ProblemStatementsL
                )}
             </CardContent>
             <CardFooter>
-              <Button asChild variant="outline" className="w-full">
-                <Link href={`/register?problemId=${statement.id}`}>
+              {mode === 'select' ? (
+                <Button variant="outline" className="w-full" onClick={() => onSelect?.(statement)}>
                   Select this Theme
                   <ArrowRight className="ml-2 h-4 w-4"/>
-                </Link>
-              </Button>
+                </Button>
+              ) : (
+                <Button asChild variant="outline" className="w-full">
+                  <Link href={`/register?problemId=${statement.id}`}>
+                    Select this Theme
+                    <ArrowRight className="ml-2 h-4 w-4"/>
+                  </Link>
+                </Button>
+              )}
             </CardFooter>
           </Card>
         ))}

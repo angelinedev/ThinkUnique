@@ -35,7 +35,7 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
   isRevealing = undefined,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const nodesRef = useRef<Node[]>([])
+  const nodesRef = useRef<any[]>([])
   const mouseRef = useRef({ x: -9999, y: -9999 })
   const rafRef = useRef<number>()
 
@@ -57,8 +57,8 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
     let height = (canvas.height = window.innerHeight)
 
     interface Pulse {
-      start: Node
-      end: Node
+      start: NetworkNode
+      end: NetworkNode
       progress: number
       speed: number
       update(): void
@@ -66,12 +66,12 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
     }
 
     class PulseImpl implements Pulse {
-      start: Node
-      end: Node
+      start: NetworkNode
+      end: NetworkNode
       progress = 0
       speed = 0.03
 
-      constructor(s: Node, e: Node) {
+      constructor(s: NetworkNode, e: NetworkNode) {
         this.start = s
         this.end = e
       }
@@ -90,13 +90,13 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
       }
     }
 
-    class Node {
+    class NetworkNode {
       x: number
       y: number
       vx: number
       vy: number
       radius: number
-      connections: Node[] = []
+      connections: NetworkNode[] = []
       pulses: Pulse[] = []
       activation = 0
       revealDelay: number
@@ -163,9 +163,10 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
     }
 
     // initialize nodes
-    nodesRef.current = Array.from({ length: nodeCount }, () => new Node())
-    nodesRef.current.forEach(n1 => {
-      nodesRef.current.forEach(n2 => {
+    nodesRef.current = Array.from({ length: nodeCount }, () => new NetworkNode() as any)
+    const nodes = nodesRef.current as any as NetworkNode[];
+    nodes.forEach(n1 => {
+      nodes.forEach((n2: NetworkNode) => {
         if (n1 !== n2) {
           const d = Math.hypot(n1.x - n2.x, n1.y - n2.y)
           if (d < connectionRadius) n1.connections.push(n2)
@@ -192,7 +193,7 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
       ctx.fillStyle = `rgba(0,0,0,${trailOpacity})`
       ctx.fillRect(0, 0, width, height)
 
-      nodesRef.current.forEach(n1 => {
+      nodes.forEach(n1 => {
         n1.connections.forEach(n2 => {
           if (n1.revealAlpha <= 0 || n2.revealAlpha <= 0) return
           const revealMultiplier = Math.min(n1.revealAlpha, n2.revealAlpha)
@@ -206,7 +207,7 @@ const InteractiveSynapseNetwork: React.FC<InteractiveSynapseNetworkProps> = ({
         })
       })
 
-      nodesRef.current.forEach(n => {
+      nodes.forEach(n => {
         n.update()
         n.draw()
       })
