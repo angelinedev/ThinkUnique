@@ -193,7 +193,7 @@ export default function RegistrationForm({ selectedProblem }: RegistrationFormPr
                         <>
                             <CardContent className="space-y-4">
                                 <div className="flex justify-between items-start">
-                                    <h3 className="text-lg font-semibold text-accent pr-4">{selectedProblem.title}</h3>
+                                    <h3 className="text-lg font-semibold text-white pr-4">{selectedProblem.title}</h3>
                                     <Badge variant="secondary" className="whitespace-nowrap">{selectedProblem.id}</Badge>
                                 </div>
                                 <div className="flex items-center text-sm text-muted-foreground">
@@ -204,7 +204,7 @@ export default function RegistrationForm({ selectedProblem }: RegistrationFormPr
                                     <Badge variant="outline" className="border-accent text-accent">{selectedProblem.category}</Badge>
                                     <Badge variant="secondary">{selectedProblem.theme}</Badge>
                                 </div>
-                                <p className="text-sm text-foreground/80 pt-2">{selectedProblem.statement}</p>
+                                <p className="text-sm text-white pt-2">{selectedProblem.statement}</p>
                             </CardContent>
                             <CardFooter>
                                 <Button variant="outline" asChild>

@@ -116,7 +116,7 @@ export default function Home() {
           </Button>
           <Button asChild size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-full border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/15 text-blue-100 transition-all font-medium text-base backdrop-blur-sm group">
             <Link href="/problem-statements" className="w-full flex justify-center items-center">
-              Explore Themes
+              Explore Problem Statements
               <ChevronRight className="ml-2 h-4 w-4 text-blue-400/50 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all" />
             </Link>
           </Button>

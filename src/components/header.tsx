@@ -40,7 +40,7 @@ export function Header() {
           </Link>
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
             <Link href="/problem-statements" className="text-white/60 hover:text-white transition-colors tracking-wide">
-              Themes
+              Problem Statements
             </Link>
             <Link href="/instructions" className="text-white/60 hover:text-white transition-colors tracking-wide">
               Instructions
@@ -64,7 +64,7 @@ export function Header() {
                       <span className="font-bold font-headline">ThinQnique</span>
                   </Link>
                   <Link href="/problem-statements" onClick={() => setIsOpen(false)} className="text-white/60 transition-colors hover:text-white">
-                    Themes
+                    Problem Statements
                   </Link>
                   <Link href="/instructions" onClick={() => setIsOpen(false)} className="text-white/60 transition-colors hover:text-white">
                     Instructions

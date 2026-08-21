@@ -17,7 +17,7 @@ const teamCriteria = [
   "At least 50% of the team (minimum 3 members) must be from the CSE department.",
   "Hardware Edition: Teams can be multi-disciplinary.",
   "Software Edition: The majority of the team members must be programmers.",
-  "Teams must select one of the provided official themes and frame their own problem statement based on references from previous SIH problem statements.",
+  "The problem statements for 2026 have been updated. You can select a specific problem statement from the list. If you have already registered, kindly update your problem statement using the 'Already Registered? Update Problem Statement' button on the homepage.",
   "You can complete your registration now and submit the presentation later. Please make sure to copy and save the Google Form link provided upon registration (Deadline: 23:59, 23/08/2026, Sunday)."
 ];
 

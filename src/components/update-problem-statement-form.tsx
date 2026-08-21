@@ -146,7 +146,7 @@ export default function UpdateProblemStatementForm() {
              <CardContent>
                <div className="bg-blue-950/30 p-4 rounded-lg border border-blue-500/10">
                  <p className="text-sm text-blue-200/70 mb-1">Current Problem Statement:</p>
-                 <p className="text-blue-50 font-medium">
+                 <p className="text-white font-medium">
                    <span className="text-blue-300 mr-2">{teamInfo.problemStatementId}</span>
                    {teamInfo.problemStatementTitle}
                  </p>
@@ -195,7 +195,7 @@ export default function UpdateProblemStatementForm() {
           <CardContent className="space-y-6">
             <div className="bg-green-950/30 p-4 rounded-lg border border-green-500/10 text-left">
               <p className="text-sm text-green-200/70 mb-1">New Problem Statement:</p>
-              <p className="text-green-50 font-medium">
+              <p className="text-white font-medium">
                 <span className="text-green-300 mr-2">{selectedStatement.id}</span>
                 {selectedStatement.title}
               </p>

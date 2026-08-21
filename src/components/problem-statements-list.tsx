@@ -88,10 +88,10 @@ export default function ProblemStatementsList({ statements, mode = 'register', o
                 <Badge variant="secondary" className="bg-blue-500/20 text-blue-100 hover:bg-blue-500/30">{statement.id}</Badge>
                 <Badge variant="outline" className="w-fit border-blue-500/30 text-blue-200">{statement.category}</Badge>
               </div>
-              <CardTitle className="font-headline text-xl pt-2 text-white/90">{statement.title}</CardTitle>
+              <CardTitle className="font-headline text-xl pt-2 text-white">{statement.title}</CardTitle>
             </CardHeader>
             <CardContent className="flex-grow">
-               <p className="text-sm text-muted-foreground">{statement.description}</p>
+               <p className="text-sm text-white">{statement.description}</p>
                
                {statement.referenceExamples && statement.referenceExamples.length > 0 && (
                  <Accordion type="single" collapsible className="w-full mt-4">
@@ -111,13 +111,13 @@ export default function ProblemStatementsList({ statements, mode = 'register', o
             <CardFooter>
               {mode === 'select' ? (
                 <Button variant="outline" className="w-full" onClick={() => onSelect?.(statement)}>
-                  Select this Theme
+                  Select this Problem Statement
                   <ArrowRight className="ml-2 h-4 w-4"/>
                 </Button>
               ) : (
                 <Button asChild variant="outline" className="w-full">
                   <Link href={`/register?problemId=${statement.id}`}>
-                    Select this Theme
+                    Select this Problem Statement
                     <ArrowRight className="ml-2 h-4 w-4"/>
                   </Link>
                 </Button>
