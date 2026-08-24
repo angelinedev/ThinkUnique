@@ -79,8 +79,8 @@ export default function Home() {
                 (!skipIntro && introStage < 2) ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"
               )}
             >
-              <span className="text-[10px] sm:text-xs font-medium text-blue-100/60 tracking-widest uppercase">Registration Open</span>
-              <ChevronRight className="h-3 w-3 text-blue-400/50" />
+              <span className="text-[10px] sm:text-xs font-medium text-red-400/80 tracking-widest uppercase">Registration Closed</span>
+              <ChevronRight className="h-3 w-3 text-red-400/50" />
             </Link>
         </div>
 
@@ -108,12 +108,9 @@ export default function Home() {
             (!skipIntro && introStage < 2) ? "opacity-0 translate-y-4 pointer-events-none" : "opacity-100 translate-y-0"
           )}
         >
-          <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 bg-blue-600 text-white hover:bg-blue-500 transition-all rounded-full font-medium text-base shadow-[0_0_20px_rgba(37,99,235,0.3)] group">
-            <Link href="/register" className="w-full flex justify-center items-center">
-              Register Team
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
+          <div className="w-full sm:w-auto h-12 px-8 flex justify-center items-center bg-blue-900/20 text-white/50 border border-blue-500/20 cursor-not-allowed rounded-full font-medium text-base">
+            Registration Closed
+          </div>
           <Button asChild size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 rounded-full border-blue-500/20 bg-blue-500/5 hover:bg-blue-500/15 text-blue-100 transition-all font-medium text-base backdrop-blur-sm group">
             <Link href="/problem-statements" className="w-full flex justify-center items-center">
               Explore Problem Statements
