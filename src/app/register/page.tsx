@@ -29,10 +29,12 @@ function RegistrationFormSkeleton() {
 }
 
 function RegisterPageContent({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-    const problemId = (searchParams?.problemId as string) || "";
-    const selectedProblem = problemStatements.find(p => p.id === problemId) || null;
-
-    return <RegistrationForm selectedProblem={selectedProblem} />;
+    return (
+        <div className="text-center p-12 bg-blue-900/10 border border-blue-500/20 rounded-xl max-w-2xl mx-auto backdrop-blur-sm">
+            <h2 className="text-3xl font-semibold text-red-400 mb-4">Registration Closed</h2>
+            <p className="text-muted-foreground text-lg">We are no longer accepting new team registrations for this hackathon. Thank you for your interest!</p>
+        </div>
+    );
 }
 
 

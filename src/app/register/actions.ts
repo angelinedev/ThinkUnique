@@ -54,6 +54,8 @@ const serverFormSchema = z.object({
 
 
 export async function submitRegistrationAction(formData: FormData) {
+    return { success: false, message: "Registration is currently closed.", submissionId: "" };
+    
     try {
         console.log("Form submitted. Processing...");
         
